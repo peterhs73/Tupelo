@@ -44,3 +44,5 @@ src/archieve/
 src/Test.py
 src/web.py
 *.ipynb
+tupelo_archieve/
+
