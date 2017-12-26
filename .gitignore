@@ -43,4 +43,4 @@ new_features/
 src/archieve/
 src/Test.py
 src/web.py
-
+*.ipynb
