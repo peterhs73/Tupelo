@@ -1,0 +1,91 @@
+========================
+Peter Sun - Quick Update
+========================
+
+:date: 10/18/2017
+:author: Peter Sun
+
+.. contents::
+
+Graphene sample coating
+=======================
+
+Peter bought monolayer graphene and tried a few published methods for getting a free graphene layer on a liquid surface.  Preliminary findings: Holder, graphene on copper; the copper does not etch uniformly and the graphene breaks apart.  "It breaks into pieces during etching".  So was successful at picking up a monolayer of graphene floating on a liquid. 
+
+Talked with Kyle Dorsey in the Paul McEuen group about graphene.  Consensus: "a lot of graphene papers are hype and not reproducible, so be careful about taking any paper's claims at face value."  
+
+Switched to multilayer graphene. Found two papers with recipes to grow it. [#Jo2010apr]_ [#Kim2009jan]_  With Kyle Dorsey's help:
+
+* Substrate: Ni[300 nm, e-beam deposition, 0.4 angstrom/s] / SiO2[290 nm] / Si[handle wafer]. 
+
+The whole process takes about 3.5 hours; 1 hour warmup, 1.5 hours cooldown.  First, clean the surface: 
+
+* Gases: 4 SCCM hydrogen, 100 SCCM argon
+
+* Temperature: 300 degC
+
+* Time: 30 min
+
+Then deposit graphene:
+
+* Gases: 5 SCCM hydrogen, 5 SCCM methane, 100 SCCM argon
+
+* Time: 10 min
+
+* Temperature: 900 degC
+
+Grow graphene on a cleaved strip of the silicon substrate.  When done, break into smaller pieces.  Work with pieces approximately 2 cm by 1 cm in area.  Dip the sample piece into a (proprietary) copper etch [FeCl3, some HCl; used by CNF] for 20 minutes.  
+ 
+The graphene layer floats off in a quite-large piece.  The graphene is visible to the naked eye but transparent.  Expect the graphene thickness, based on published work, to be 7 to 10 layers thick.  Estimate thickness as 0.35 nm/layer x 10 layers = 3.5 nm [`wikipedia <https://en.wikipedia.org/wiki/Graphene>`__].  Estimate abs = 0.02/layer x 10 layers = 0.20, roughly consistent with the visible appearance. Can't see it on first try with profilometry.  Can't pick it up with tweezers but nevertheless "fairly robust".
+
+Picked it up with glass slide, but the graphene broke into tiny pieces.  Set the CPW substrate on *top* of the floating graphene piece quickly -- could deposit a tiny piece on the CPW this way.  Corinne measured the resistance of the graphene sheet.
+
+**Graphene piece (copper etch solution):**
+
+.. image:: ./Peter-Files/Graphene/Graphene_on_water_20171017.jpg
+   :width: 80 %
+
+**Graphene piece on waveguide, under microscope**
+
+.. image:: ./Peter-Files/Graphene/Graphene_on_waveguide_20171017.jpg
+   :width: 80 %
+
+Next: Waiting for the etch solution, to reproduce the etch in out laboratory.  Transfer it from etching solution to pure water before depositing.
+
+ELN
+===
+
+I use Pelican (in Python; markdown and rst).  Peter implements an ELN in Hugo (not Python, written in Go; works well with Markdown, not necessarily rst).  Peter has written Python scripts to copy the text file over and add a header with time/date.  Wrap the website in a GUI to make it easy to edit an entry.
+
+A-Exam
+======
+
+Greg Ezra and Lena Kourkoutis-Fitting have agreed to serve on Peter's A-Exam committee.
+
+Travel
+======
+
+Depart 1 January.  Away two months.  Approximate return 1 March.  *Approximate* because he has to renew both Passport (every ten years) and Visa.  Expect that Marohn needs to write a letter.  Peter will contact Cornell's ISO about what the letter should look like.
+
+I authorize Peter to start shopping for flights.
+
+While away, Peter will study my Magnetic Resonance class notes.
+
+Moving forward
+==============
+
+To start, Peter would like to work on MRFM simulation code and continue Hoang's image-reconstruction work.  
+
+Me: Look at the SPINACH package created by Ilya Kuprov's gruop [#Spinach]_ [#Hogben2011feb]_.  With Köckenberger, Kuprov and coworkers have simulated DNP [#Karabanov2012feb]_.  An interesting question for us it how DNP works in a few gauss/ansgstrom magnetic field gradient.
+
+References
+==========
+.. [#Kim2009jan] [**Kim2009jan**] Kim, K.S. et al. "Large-scale pattern growth of graphene films for stretchable transparent electrodes", *Nature Letter*, **2009**, *457*, 706-710 [`10.1038/nature07719 <https://doi.org/10.1038/nature07719>`__].
+
+.. [#Jo2010apr] [**Jo2010apr**] Jo, G. et al. "Large-scale patterned multi-layer graphene films as transparent conducting electrodes for GaN light-emitting diodes", *Nanotechnology*, **2010**, *21*, 175201 [`10.1088/0957-4484/21/17/175201 <https://doi.org/10.1088/0957-4484/21/17/175201>`__].
+
+.. [#Spinach] http://www.spindynamics.org/
+
+.. [#Hogben2011feb] [**Hogben2011feb**] Hogben, H.; Krzystyniak, M.; Charnock, G.; Hore, P. & Kuprov, I. "Spinach -- a Software Library for Simulation of Spin Dynamics in Large Spin Systems", *J. Magn. Reson.*, **2011**, *208*, 179 - 194 [`10.1016/j.jmr.2010.11.008 <https://doi.org/10.1016/j.jmr.2010.11.008>`__].
+
+.. [#Karabanov2012feb] [**Karabanov2012feb**] Karabanov, A.; van der Drift, A.; Edwards, L. J.; Kuprov, I. & Köckenberger, W. "Quantum mechanical simulation of solid effect dynamic nuclear polarisation using Krylov-Bogolyubov time averaging and a restricted state-space", *Phys. Chem. Chem. Phys.*, **2012**, *14*, 2658 - 2668 [`10.1039/c2cp23233b <https://doi.org/10.1039/c2cp23233b>`__].

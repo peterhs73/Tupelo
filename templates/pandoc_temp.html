@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block pandoc_meta %}
+    <meta name="src_folder" content="{{src_folder}}" />
+    <meta name="dst_folder" content="{{dst_folder}}" />
+  $for(author-meta)$
+    <meta name="author" content="$author-meta$" />
+  $endfor$
+  $if(date-meta)$
+    <meta name="dcterms.date" content="$date-meta$" />
+  $endif$
+  $if(keywords)$
+    <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+  $endif$
+  <title>$doc_title$</title>
+{% endblock %}
+
+{% block js_css %}
+  <script type="text/javascript" async src="{{tupelo_path}}/js/MathJax2.7.2/MathJax.js"></script>
+  <link rel="stylesheet" href="{{tupelo_path}}/css/googlefonts.css">
+  <link rel="stylesheet" href="{{tupelo_path}}/css/default.css" media="all">
+  <link rel="stylesheet" href="{{tupelo_path}}/css/highlight-atelier-cave-light.css">
+  <link rel="stylesheet" href="{{tupelo_path}}/css/pan.css">
+  <script src="{{tupelo_path}}/js/highlight.pack.js"></script>
+{% endblock %}
+
+{% block nav %}
+   <header class="header">
+    <nav class="nav">
+      <a href="{{dst_folder}}/{{baseurl}}" class="nav-logo">
+        <img src="{{tupelo_path}}/images/logo.png"
+         width="75px"
+         height="75px"
+         alt="home_logo">
+      </a>
+      <ul class="nav-links">
+      <li><a class = "sidenav_pt" onclick="openNav()">&#9776;</a></li>
+      </ul>
+    </nav>
+  </header>
+{% endblock %}
+
+{% block content %}
+<main class="content" role="main">
+
+$if(toc)$
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      $toc$
+  </div>
+$endif$
+
+<article class="article" onclick = "closeNav()">
+      $if(title)$
+        <h1 class="article-title">$title$</h1>
+      $if(subtitle)$
+        <p class="article-subtitle">$subtitle$</p>
+      $endif$
+      $for(author)$
+        <p class="article-author">$author$</p>
+      $endfor$
+      $if(date)$
+        <p class="article-date">$date$</p>
+      $endif$
+      $else$
+      $if(doc_title)$
+        <h1 class="article-title">$doc_title$</h1>
+      $endif$
+      <br>
+      $if(timestamp)$
+        <p class="article-date">last update: $timestamp$</p>
+      $endif$
+      $endif$
+    <div class="article-content">
+      $body$
+    </div>
+</article>
+</main>
+{% endblock %}
+{% block foot %}
+    <script src="{{tupelo_path}}/js/scrollsTop.js"></script>
+    <script src="{{tupelo_path}}/js/src_path.js"></script>
+{% endblock %}

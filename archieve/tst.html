@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script type="text/javascript" src="file_log.json"></script>
+<script type="text/javascript" src="js/timestamp.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+   var request = new XMLHttpRequest();
+   request.open("GET", "file_log.json", false);
+   request.send(null)
+   var my_JSON_object = JSON.parse(request.responseText);
+   console.log(my_JSON_object);
+</script>
+
+<h1>My First Heading</h1>
+<a href="rt/rt.html">wut</a>
+</body>
+</html>

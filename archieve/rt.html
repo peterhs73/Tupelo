@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+          <title>rt</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+        </style>
+
+  <script type="text/javascript" async src="js/MathJax2.7/MathJax.js"></script>
+  <link rel="stylesheet" href="css/googlefonts.css">
+  <link rel="stylesheet" href="css/default.css" media="all">
+  <link rel="stylesheet" href="css/highlight_monokai_sublime.css">
+  <script src="js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+  <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "25%";
+        // document.getElementById("main").style.marginLeft = "0%";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        // document.getElementById("main").style.marginLeft= "0";
+    }
+  </script>
+
+<body>
+<button onclick="topFunction()" id="toTop" title="Go to top">Top</button>
+<div class="wrapper">
+  <header class="header">
+    <nav class="nav">
+      <ul class="nav-links">
+      <li><a href="/Users/petersun/Dropbox/Tupelo/index.html#Python">home</a></li>
+      <li><a href="/Research_coyote">updates</a></li>
+      <li><a href="/Coyote_coyote">coyote</a></li>
+      <li><a href="/Queue_coyote">queue</a></li>
+      <li><a class = "sidenav_pt" onclick="openNav()">&#9776;</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<main class="content" role="main">
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <ul>
+      <li><a href="#research-update">Research Update</a><ul>
+      <li><a href="#overview">Overview</a><ul>
+      <li><a href="#graphene">Graphene</a></li>
+      <li><a href="#blender-animation">Blender Animation</a></li>
+      </ul></li>
+      </ul></li>
+      <li><a href="#graphene-1">Graphene</a><ul>
+      <li><a href="#w100">Graphene: Monolayer</a></li>
+      <li><a href="#graphene-monolayer">Graphene: Monolayer</a><ul>
+      <li><a href="#bigotimes-no"><span class="math inline">⨂</span> <strong>NO</strong></a></li>
+      </ul></li>
+      <li><a href="#multi-layer-graphene-growth">Multi-Layer Graphene: Growth</a></li>
+      <li><a href="#w100">Multi-Layer Graphene: Growth</a></li>
+      <li><a href="#w55">Multi-Layer Graphene: Etch</a></li>
+      <li><a href="#w35">Multi-Layer Graphene: Etch</a><ul>
+      <li><a href="#problem">Problem:</a></li>
+      </ul></li>
+      <li><a href="#w47">Multi-Layer Graphene: Etch</a></li>
+      <li><a href="#w80">Multi-Layer Graphene: Transfer</a></li>
+      <li><a href="#w60">Multi-Layer Graphene: Characterization</a><ul>
+      <li><a href="#conductivity">Conductivity</a></li>
+      <li><a href="#thickness">Thickness</a></li>
+      </ul></li>
+      <li><a href="#w90">Multi-Layer Graphene: Raman Spectroscopy</a></li>
+      <li><a href="#w90">Multi-Layer Graphene: Raman Spectroscopy</a></li>
+      <li><a href="#multi-layer-graphene-current-and-future">Multi-Layer Graphene: Current and Future</a></li>
+      <li><a href="#w100">Multi-Layer Graphene: Surface Modification</a></li>
+      <li><a href="#w35">Multi-Layer Graphene: Surface Modification</a></li>
+      <li><a href="#w80">Multi-Layer Graphene: Surface Modification</a></li>
+      </ul></li>
+      <li><a href="#blender">Blender</a><ul>
+      <li><a href="#w80">Blender: General</a></li>
+      <li><a href="#w47">Animation: Pipeline</a></li>
+      <li><a href="#w47">Animation: Modeling</a></li>
+      <li><a href="#w47">Animation: Material/Color</a></li>
+      <li><a href="#w47">Animation: Material/Color</a></li>
+      <li><a href="#animation-render">Animation: Render</a></li>
+      <li><a href="#w80">Animation: MRFM</a></li>
+      <li><a href="#w90">Animation: MRFM</a></li>
+      <li><a href="#w90">Animation: Timeline and DopeSheet</a></li>
+      <li><a href="#w90">Animation: Timeline and DopeSheet</a></li>
+      <li><a href="#w90">Animation: Post Edit</a></li>
+      <li><a href="#blender-python-scripting">Blender: Python Scripting</a></li>
+      <li><a href="#w100">Blender: AWS</a></li>
+      </ul></li>
+      <li><a href="#doitobib_lite">DoiToBib_Lite</a><ul>
+      <li><a href="#w90">DoiToBib_Lite: GUI</a></li>
+      </ul></li>
+      <li><a href="#reference-acknowledgement">Reference &amp; Acknowledgement</a><ul>
+      <li><a href="#reference">Reference</a></li>
+      <li><a href="#acknowledgement">Acknowledgement</a></li>
+      <li><a href="#acknowledgement-1">Acknowledgement</a></li>
+      </ul></li>
+      </ul>
+  </div>
+
+<article class="article" onclick = "closeNav()">
+  
+    
+    
+          <p class="title">last update: time time time</p>
+    
+    
+    
+        <br>
+    
+    <div class="article-content">
+      <h1 id="research-update">Research Update</h1>
+      <p>Peter Sun | Cornell University<br />
+      Nov 06, 2017<br />
+      <a href = "Research_Update20171106.html" style = "color:black; border-bottom: 0px;">Slide Version</a></p>
+      <h2 id="overview">Overview</h2>
+      <h3 id="graphene">Graphene</h3>
+      <ul>
+      <li>Monolayer</li>
+      <li>Multilayer
+      <ul>
+      <li>Growth</li>
+      <li>Etch</li>
+      <li>Transfer</li>
+      </ul></li>
+      <li>Current progress</li>
+      </ul>
+      <h3 id="blender-animation">Blender Animation</h3>
+      <ul>
+      <li>General Pipeline</li>
+      <li>Python Script</li>
+      <li>AWS integration</li>
+      </ul>
+      <h1 id="graphene-1">Graphene</h1>
+      <h2 id="w100">Graphene: Monolayer</h2>
+      <figure>
+      <img src="figures/monolayer1.png" alt="Monolayer Graphene Transfer Attempts. Concentration of etchant varies, and One side of graphene cleaned with sandpaper or tape." /><figcaption>Monolayer Graphene Transfer Attempts. Concentration of etchant varies, and One side of graphene cleaned with sandpaper or tape.</figcaption>
+      </figure>
+      <h2 id="graphene-monolayer">Graphene: Monolayer</h2>
+      <p><br></p>
+      <h3 id="bigotimes-no"><span class="math inline">⨂</span> <strong>NO</strong></h3>
+      <ul>
+      <li>Not robust on water or water/IPA surface</li>
+      <li>Requires a extremely flat surface with a relatively large area</li>
+      </ul>
+      <h2 id="multi-layer-graphene-growth">Multi-Layer Graphene: Growth</h2>
+      <ul>
+      <li>300 nm Nickel on a <span class="math inline"><em>S</em><em>i</em><em>O</em><sub>2</sub>/<em>S</em><em>i</em></span> wafer
+      <ul>
+      <li>CNF</li>
+      <li><span class="math inline"><em>S</em><em>i</em><em>O</em><sub>2</sub></span> ~ 290 nm</li>
+      <li>at 0.4 angstrom/s</li>
+      </ul></li>
+      <li>Graphene Growth<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
+      <ul>
+      <li>Furnace, McEuen Lab, Kyle Dorsey</li>
+      <li>Deposition
+      <ul>
+      <li>900 <span class="math inline"><em></em><sup>∘</sup><em>C</em></span>, 5 sccm <span class="math inline"><em>H</em><sub>2</sub></span>, 5 sccm <span class="math inline"><em>C</em><em>H</em><sub>4</sub></span>, 100 sccm <span class="math inline"><em>A</em><em>r</em></span></li>
+      </ul></li>
+      <li>Approx. 3.5 hrs</li>
+      </ul></li>
+      </ul>
+      <h2 id="w100">Multi-Layer Graphene: Growth</h2>
+      <figure>
+      <img src="figures/mlg_furnace.jpg" alt="Furnace" style="width:90.0%" /><figcaption>Furnace</figcaption>
+      </figure>
+      <h2 id="w55">Multi-Layer Graphene: Etch</h2>
+      <ul>
+      <li>Copper Etchant (<span class="math inline"><em>F</em><em>e</em><em>C</em><em>l</em><sub>3</sub></span>): Approx. 25 - 40 mins</li>
+      <li>The graphene/Ni/<span class="math inline"><em>S</em><em>i</em><em>O</em><sub>2</sub></span>/Si piece (1 cm x 2 cm) floats on the etchant</li>
+      </ul>
+      <figure>
+      <img src="figures/mlg_etch_1.jpg" alt="Nickel Etch (first attempt)" style="width:55.0%" /><figcaption>Nickel Etch (first attempt)</figcaption>
+      </figure>
+      <h2 id="w35">Multi-Layer Graphene: Etch</h2>
+      <h3 id="problem">Problem:</h3>
+      <ul>
+      <li>Etch from the side and inwards.</li>
+      <li>Etch rate depends on 1) piece size, 2) shape of the cut and 3) the “starting point”</li>
+      </ul>
+      <p><img src="figures/mlg_etch_2.jpg" alt="Nickel Etch (multiple break points)" style="width:35.0%" /> <img src="figures/mlg_etch_3.jpg" alt="Nickel Etch (“etch corner” created)" style="width:35.0%" /></p>
+      <h2 id="w47">Multi-Layer Graphene: Etch</h2>
+      <p><strong>Solution</strong>: low etchant volume (breaks into 3 large pieces when transferred: inherent stress when etching)</p>
+      <figure>
+      <img src="figures/mlg_etch_4.jpg" alt="Nickel Etch (complete piece)" style="width:47.0%" /><figcaption>Nickel Etch (complete piece)</figcaption>
+      </figure>
+      <h2 id="w80">Multi-Layer Graphene: Transfer</h2>
+      <ul>
+      <li>Use watch glass to scoop up the whole graphene piece and place into D.I water. (3 times)</li>
+      <li>The waveguide are approached from top and “stamp” motion (not perfect)</li>
+      <li>Dry with nitrogen gun first and store in glovebox vacuum for 16 - 20 hrs.</li>
+      </ul>
+      <figure>
+      <img src="figures/mlg_pswg_1.jpg" alt="Graphene on polystyrene" style="width:80.0%" /><figcaption>Graphene on polystyrene</figcaption>
+      </figure>
+      <h2 id="w60">Multi-Layer Graphene: Characterization</h2>
+      <h3 id="conductivity">Conductivity</h3>
+      <ul>
+      <li>Transferred graphene onto a waveguide (without polystyrene):
+      <ul>
+      <li>conductive (from 2 <span class="math inline"><em>M</em><em>Ω</em></span> to 60 - 40 <span class="math inline"><em>Ω</em></span>)</li>
+      </ul></li>
+      </ul>
+      <h3 id="thickness">Thickness</h3>
+      <ul>
+      <li>Profilometry (CCMR): ~ 15 nm (max 20 nm)</li>
+      <li>Raman Spectroscopy (CCMR): 488 nm Laser</li>
+      </ul>
+      <h2 id="w90">Multi-Layer Graphene: Raman Spectroscopy</h2>
+      <figure>
+      <img src="figures/mlg_raman.png" alt="Raman Spectroscopy of Graphene on Silicon" style="width:90.0%" /><figcaption>Raman Spectroscopy of Graphene on Silicon</figcaption>
+      </figure>
+      <h2 id="w90">Multi-Layer Graphene: Raman Spectroscopy</h2>
+      <figure>
+      <img src="figures/mlg_raman_ex.png" alt="Raman Spectroscopy of Graphene on Silicon - Standard" style="width:90.0%" /><figcaption>Raman Spectroscopy of Graphene on Silicon - Standard</figcaption>
+      </figure>
+      <h2 id="multi-layer-graphene-current-and-future">Multi-Layer Graphene: Current and Future</h2>
+      <p><span class="math inline">✓</span> Growth<br />
+      <span class="math inline">✓</span> Etch Technique<br />
+      <span class="math inline">✓</span> Transfer on Silicon or waveguide<br />
+      <span class="math inline">✓</span> Transfer on polystyrene</p>
+      <p><span class="math inline">⋈</span> Polystyrene on waveguide surface modification</p>
+      <p><span class="math inline">□</span> Transfer on modified polystyrene/waveguide &amp; characterization<br />
+      <span class="math inline">□</span> AFM surface profile (waiting for training)<br />
+      <span class="math inline">□</span> Transfer onto sample<br />
+      <span class="math inline">□</span> Check spin radical abundance post-transfer<br />
+      <span class="math inline">□</span> Transfer Technique Improvements<br />
+      <span class="math inline">□</span> Growth options/improvements</p>
+      <h2 id="w100">Multi-Layer Graphene: Surface Modification</h2>
+      <figure>
+      <img src="figures/sample_surface.jpg" alt="General Scheme of Sample Surface" style="width:100.0%" /><figcaption>General Scheme of Sample Surface</figcaption>
+      </figure>
+      <h2 id="w35">Multi-Layer Graphene: Surface Modification</h2>
+      <figure>
+      <img src="figures/swab_mod.jpg" alt="Swab Tip Modification" style="width:35.0%" /><figcaption>Swab Tip Modification</figcaption>
+      </figure>
+      <p><span class="math inline">⨂</span> <strong>NO</strong></p>
+      <ul>
+      <li>Cleaning with Toluene not sufficient:
+      <ul>
+      <li>Hard to clean throughout (3 times on silicon wafer)</li>
+      <li>Hard to control: multiple facets, often end up on center line</li>
+      <li>Surface profile not ideal
+      <ul>
+      <li>If a tiny droplet forms, the edge could go up to 2 <span class="math inline"><em>μ</em><em>m</em></span></li>
+      </ul></li>
+      </ul></li>
+      </ul>
+      <h2 id="w80">Multi-Layer Graphene: Surface Modification</h2>
+      <p><span class="math inline">⨂</span> <strong>NO</strong></p>
+      <ul>
+      <li>“Drop Cast” PVA first and spin coat Polystyrene
+      <ul>
+      <li>Polystyrene was coated on top of PVA</li>
+      </ul></li>
+      </ul>
+      <p><span class="math inline">⋈</span> Glue Mica on Waveguide with PVA</p>
+      <figure>
+      <img src="figures/wg_mica.jpg" alt="Mica glued on waveguide" style="width:80.0%" /><figcaption>Mica glued on waveguide</figcaption>
+      </figure>
+      <h1 id="blender">Blender</h1>
+      <h2 id="w80">Blender: General</h2>
+      <p>Open Source 3D Software with API for python scripting<br />
+      Used Blender 2.78c (current version 2.8)<br />
+      <img src="figures/Blender_gui.png" alt="Blender Interface" style="width:80.0%" /></p>
+      <h2 id="w47">Animation: Pipeline</h2>
+      <p>Modeling <span class="math inline">⟹</span> Material/Color <span class="math inline">⟹</span> Animation <span class="math inline">⟹</span> Rendering <span class="math inline">⟹</span> Post Sequence Edit</p>
+      <h2 id="w47">Animation: Modeling</h2>
+      <p>Object, Light and Camera</p>
+      <p><img src="figures/Model_Raw_1.png" alt="Blender Model Raw" style="width:50.0%" /> <img src="figures/Model_Raw_2.png" alt="Blender Model Raw" style="width:50.0%" /></p>
+      <h2 id="w47">Animation: Material/Color</h2>
+      <p><br> <img src="figures/Material_1.png" alt="Blender Material Diffuse" style="width:50.0%" /> <img src="figures/Material_2.png" alt="Blender Material Glossy" style="width:50.0%" /></p>
+      <h2 id="w47">Animation: Material/Color</h2>
+      <p><br> <img src="figures/Material_1_render.png" alt="Blender Material Diffuse Rendered" style="width:50.0%" /> <img src="figures/Material_2_render.png" alt="Blender Material Glossy Rendered" style="width:50.0%" /></p>
+      <h2 id="animation-render">Animation: Render</h2>
+      <p>Cycles Render: <a href="https://en.wikipedia.org/wiki/Path_tracing">Path Tracing</a></p>
+      <div style="float: left; width: 60%>
+      ![Path Trace Samples](figures/Path_Trace.png){width=50%}
+      </div>
+      
+      <div style="float: right; width: 40%; font-size: 90%">
+      ![Blender Render Menu](figures/Render_Menu.png){width=50%}
+      </div>
+      <h2 id="w80">Animation: MRFM</h2>
+      <figure>
+      <img src="figures/Render_MRFM_1.png" alt="MRFM Render Wire Frame Example" style="width:90.0%" /><figcaption>MRFM Render Wire Frame Example</figcaption>
+      </figure>
+      <h2 id="w90">Animation: MRFM</h2>
+      <figure>
+      <img src="figures/Render_MRFM_2.png" alt="MRFM Render Preview" style="width:90.0%" /><figcaption>MRFM Render Preview</figcaption>
+      </figure>
+      <h2 id="w90">Animation: Timeline and DopeSheet</h2>
+      <figure>
+      <img src="figures/Animation_1.png" alt="Blender Animation Interface" style="width:100.0%" /><figcaption>Blender Animation Interface</figcaption>
+      </figure>
+      <h2 id="w90">Animation: Timeline and DopeSheet</h2>
+      <figure>
+      <img src="figures/Animation_2.png" alt="Blender Animation Interface" style="width:100.0%" /><figcaption>Blender Animation Interface</figcaption>
+      </figure>
+      <h2 id="w90">Animation: Post Edit</h2>
+      <figure>
+      <img src="figures/Post_Edit.png" alt="Blender Post Edit" style="width:105.0%" /><figcaption>Blender Post Edit</figcaption>
+      </figure>
+      <h2 id="blender-python-scripting">Blender: Python Scripting</h2>
+      <pre class="python"><code>import bpy
+      import numpy as np
+      
+      D = bpy.data
+      
+      def spin_ori(startframe, endframe, frame_steps, xyz_rad_list, obj):
+          frame_range = np.arange(startframe, endframe, frame_steps)
+          for key_frame in frame_range:
+              D.objects[obj].rotation_euler = xyz_rad_list[key_frame]
+              D.objects[obj].keyframe_insert(data_path = &quot;rotation_euler&quot;, frame = key_frame)
+      
+      spin_ori(845,900, 1, xyz_rad_spin2, &quot;Spin6&quot;)</code></pre>
+      <h2 id="w100">Blender: AWS</h2>
+      <p>[Primary] EC2 CPU: c4.8xlarge<br />
+      <a href="aws_blender.html">AWS Script</a></p>
+      <figure>
+      <img src="figures/AWS_EC2.png" alt="AWS EC2 Interface" style="width:100.0%" /><figcaption>AWS EC2 Interface</figcaption>
+      </figure>
+      <h1 id="doitobib_lite">DoiToBib_Lite</h1>
+      <h2 id="w90">DoiToBib_Lite: GUI</h2>
+      <p>Python3 + Qt5.9 <img src="figures/doitobib_lite_gui.png" alt="DoiToBib_GUI" style="width:90.0%" /></p>
+      <h1 id="reference-acknowledgement">Reference &amp; Acknowledgement</h1>
+      <h2 id="reference">Reference</h2>
+      <p><br> <strong>Kim2009jan</strong> Kim, K.S. et al. “Large-scale pattern growth of graphene films for stretchable transparent electrodes”, <em>Nature Letter</em>, <strong>2009</strong>, <em>457</em>, 706-710 <a href="https://doi.org/10.1038/nature07719">10.1038/nature07719</a></p>
+      <p><strong>Jo2010apr</strong> Jo, G. et al. “Large-scale patterned multi-layer graphene films as transparent conducting electrodes for GaN light-emitting diodes”, <em>Nanotechnology</em>, <strong>2010</strong>, <em>21</em>, 175201 <a href="https://doi.org/10.1088/0957-4484/21/17/175201">10.1088/0957-4484/21/17/175201</a></p>
+      <h2 id="acknowledgement">Acknowledgement</h2>
+      <p><strong>Prof. John Marohn</strong> for letting me be here</p>
+      <p><strong>Kyle Dorsey</strong>, McEuen Lab at Cornell, for graphene preparation</p>
+      <p><strong>Benjamin Richard</strong>, Hanrath Group at Cornell, for Blender introduction</p>
+      <p><strong>Hoang Long Nguyen, Corinne Issac, Michael Boucher, Ali Tirmzi and Jacelyn Greenwald</strong>, Marohn Group at Cornell, for answering all my endless weird questions</p>
+      <p><strong>Michael Boucher and Ali Tirmzi</strong>, Marohn Group at Cornell, for inspiring me to be a YouTuber</p>
+      <h2 id="acknowledgement-1">Acknowledgement</h2>
+      <p><img src="figures/Group_Pic.jpg" style="width:105.0%" /></p>
+      <section class="footnotes">
+      <hr />
+      <ol>
+      <li id="fn1"><p><strong>Kim2009jan</strong> Kim, K.S. et al. “Large-scale pattern growth of graphene films for stretchable transparent electrodes”, <em>Nature Letter</em>, <strong>2009</strong>, <em>457</em>, 706-710 <a href="https://doi.org/10.1038/nature07719">10.1038/nature07719</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+      <li id="fn2"><p><strong>Jo2010apr</strong> Jo, G. et al. “Large-scale patterned multi-layer graphene films as transparent conducting electrodes for GaN light-emitting diodes”, <em>Nanotechnology</em>, <strong>2010</strong>, <em>21</em>, 175201 <a href="https://doi.org/10.1088/0957-4484/21/17/175201">10.1088/0957-4484/21/17/175201</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
+      </ol>
+      </section>
+    </div>
+</article>
+</main>
+  <script src="js/scrollsTop.js"></script>
+    <footer class="footer">
+        <span>Cogito ergo sum.</span>
+    </footer>
+    </div>
+  </body>
+</html>

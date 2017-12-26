@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$"$if(dir)$ dir="$dir$"$endif$>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  {% block pandoc_meta %}{% endblock %}
+  {% block js_css %}{% endblock %}
+
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+  <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "25%";
+        // document.getElementById("main").style.marginLeft = "0%";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        // document.getElementById("main").style.marginLeft= "0";
+    }
+  </script>
+
+<body>
+  <button onclick="topFunction()" id="toTop" title="Go to top">Top</button>
+  <div class="wrapper">
+{% block nav %}{% endblock %}
+{% block content %}{% endblock %}
+{% block foot %}{% endblock %}
+    <footer class="footer">
+        <span>Cogito ergo sum.</span>
+    </footer>
+  </div>
+</body>
+</html>
