@@ -5,21 +5,21 @@
 ### To-Do-list
 
 #### Next
-
+1. check if pandoc is installed
 2. mathjax seems not working at all???
 3. ability to change ~.md temp files ocassionally
     - If the file starts with '.', avoid render
 4. add option to render ipython notebook with nbconvert and customized template
+5. add the setup file
 6. Fix the problem when there is toc (which also involves links) need to test if toc is empty
 7. If there is a main folder, need to change it to Main folder
-8. get a license
+8. get a license, and check how it works
 9. add the ability to change folder settings (a message for confirm)
 
 #### Windows Specific
 
 1. DPI Problem
 2. PyQt crahes kernal sometimes?
-3. Fix the the menu bar problem (xps 15): the problem is fixed by updating the intel driver 
 
 #### Other
 - add warning if pandoc is not installed?
@@ -108,6 +108,7 @@ It is possible to pass any Python object as a signal argument by specifying PyQt
 - add the ability to edit files without guessing
 - add the ability to move files and corresponde update.
 - Index page uses 'Main', and other sorted by alphabet
+- the windows menu bar problem is solved by updating intel graphic card chip. For dell (XPS 13 & 15) the best option is to use dell support assistance that came with the computer.
 
 
 # Source Code
