@@ -38,6 +38,7 @@ Thumbs.db
 
 # Other Sources #
 #################
+*.pyc
 *.ipynb_checkpoints
 new_features/
 src/archieve/
@@ -45,4 +46,5 @@ src/Test.py
 src/web.py
 *.ipynb
 tupelo_archieve/
+Internal_ReadME.md
 
