@@ -1,4 +1,4 @@
-# Tupelo Notebook ![Tupelo](images/logo.png =50x)
+# Tupelo Notebook ![Tupelo](images/logo.png){:height="10%"}
 
 This notebook is designed for ppl who documents often and uses variety source of note format, i.e. markdown, latex, rst. or word documents. The tupelo is designed to create a fast and more readable index of the existing folders of documents. Currently it supports files of markdown, reStructuredText, latex (beta) and Word documents (beta). We are working hard to create a search engine along side the index ability.
 
