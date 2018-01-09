@@ -6,13 +6,13 @@ import pypandoc
 
 # This is necessary for the rendering environment
 
-def render_template(tupelo_path, template_filename, context):
+def render_template(tupelo_dir, template_filename, context):
 	template_env = Environment(
-		loader=FileSystemLoader(os.path.join(tupelo_path, 'templates')),
+		loader=FileSystemLoader(os.path.join(tupelo_dir, 'templates')),
 	)
 	return template_env.get_template(template_filename).render(context)
 
-def index_page(tupelo_path, index_list, dst_folder):
+def index_page(tupelo_dir, index_list, dst_folder):
 	"""
 	Render the index html use the index_temp.html from tupelo dir to the dst_folder.
 	"""
@@ -26,19 +26,25 @@ def index_page(tupelo_path, index_list, dst_folder):
 		index_key_list = ['Main']
 		index_key_list.extend(index)
 
-	template_info = {'tupelo_path': tupelo_path, 'index_key': index_key_list, 'index_info': index_list, 'baseurl':'index.html'}
+	template_info = {
+		'tupelo_dir': tupelo_dir, 
+		'index_key': index_key_list, 
+		'index_info': index_list,
+		'dst_folder': dst_folder,
+		'baseurl':'index.html'
+		}
 
 	with open(os.path.join(dst_folder,'index.html'),'w') as index_page:
-		index_page.write(render_template(tupelo_path, 'index_temp.html', template_info))
+		index_page.write(render_template(tupelo_dir, 'index_temp.html', template_info))
 
-def pandoc_temp(tupelo_path, index_list, dst_folder, src_folder):
+def pandoc_temp(tupelo_dir, index_list, dst_folder, src_folder):
 
 	"""
 	Render the pandoc html use pandoc_temp.html from tupelo dir to dst_folder/.tupelo
 	"""
 
 	template_info = {
-		'tupelo_path': tupelo_path,
+		'tupelo_dir': tupelo_dir,
 		'src_folder': src_folder,
 		'index_info': index_list, 
 		'dst_folder': dst_folder,
@@ -46,7 +52,7 @@ def pandoc_temp(tupelo_path, index_list, dst_folder, src_folder):
 		}
 
 	with open(os.path.join(dst_folder, '.tupelo', 'pandoc.html'),'w') as pandoc_temp:
-		pandoc_temp.write(render_template(tupelo_path, 'pandoc_temp.html',template_info))
+		pandoc_temp.write(render_template(tupelo_dir, 'pandoc_temp.html', template_info))
 
 def pandoc_render(src_folder, dst_folder, doc_update):
 	"""

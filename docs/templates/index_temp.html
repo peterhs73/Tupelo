@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
 {% block js_css %}
-  <script type="text/javascript" async src="{{tupelo_path}}/js/MathJax2.7.2/MathJax.js"></script>
-  <link rel="stylesheet" href="{{tupelo_path}}/css/googlefonts.css">
-  <link rel="stylesheet" href="{{tupelo_path}}/css/default.css" media="all">
-  <link rel="stylesheet" href="{{tupelo_path}}/css/highlight-atelier-cave-light.css">
-  <link rel="stylesheet" href="{{tupelo_path}}/css/pan.css">
-  <script src="{{tupelo_path}}/js/highlight.pack.js"></script>
+  <script type="text/javascript" async src="{{tupelo_dir}}/js/MathJax2.7.2/MathJax.js"></script>
+  <link rel="stylesheet" href="{{tupelo_dir}}/css/googlefonts.css">
+  <link rel="stylesheet" href="{{tupelo_dir}}/css/default.css" media="all">
+  <link rel="stylesheet" href="{{tupelo_dir}}/css/highlight-atelier-cave-light.css">
+  <link rel="stylesheet" href="{{tupelo_dir}}/css/pan.css">
+  <script src="{{tupelo_dir}}/js/highlight.pack.js"></script>
 {% endblock %}
 
 {% block nav %}
    <header class="header">
     <nav class="nav">
-      <a class="nav-logo">
-        <img src="{{tupelo_path}}/images/logo.png"
+      <a href="{{dst_folder}}/{{baseurl}}" class="nav-logo">
+        <img src="{{tupelo_dir}}/images/logo.png"
          width="75px"
          height="75px"
          alt="home_logo">
@@ -45,5 +45,5 @@
 {% endblock %}
 
 {% block foot %}
-    <script src="{{tupelo_path}}/js/scrollsTop.js"></script>
+    <script src="{{tupelo_dir}}/js/scrollsTop.js"></script>
 {% endblock %}

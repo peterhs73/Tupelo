@@ -16,7 +16,7 @@ class NotebookInfo(QWidget):
 	def __init__(self, notebooks_list, user_dir_base, parent = None):
 		super().__init__(parent)
 
-		self.setWindowIcon(QIcon(os.path.normcase('tupelo_gui/gui_files/tupelologo.png')))
+		# self.setWindowIcon(QIcon(os.path.normcase('tupelo_gui/gui_files/tupelologo.png')))
 
 		self.notebooks_list = notebooks_list
 		self.user_dir_home = os.path.join(user_dir_base, 'Desktop')
@@ -40,7 +40,7 @@ class NotebookInfo(QWidget):
 
 		self.nickname_box = QLineEdit(self)
 
-		self.src_folder_btn = QPushButton(QIcon(os.path.normcase('tupelo_gui/gui_files/folder.png')), "", self)
+		self.src_folder_btn = QPushButton(QIcon(os.path.normcase('images/folder.png')), "", self)
 		self.src_folder_btn.clicked.connect(self.get_src_folder)
 
 		self.confirm_btn = QPushButton("confirm")

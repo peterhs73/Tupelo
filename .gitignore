@@ -36,15 +36,13 @@ Thumbs.db
 *.sql
 *.sqlite
 
-# Other Sources #
-#################
+# python and build Sources #
+############################
 *.pyc
 *.ipynb_checkpoints
-new_features/
-src/archieve/
-src/Test.py
-src/web.py
 *.ipynb
-tupelo_archieve/
-Internal_ReadME.md
+docs/dist/
+internal/
+docs/build/
+
 

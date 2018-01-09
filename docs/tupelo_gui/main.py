@@ -16,7 +16,7 @@ from tupelo_utils.notebook import tupelo_update
 from tupelo_gui.threads import TupeloThread
 from tupelo_gui.watcher import LiveEdit
 from tupelo_gui.htmlview import TupeloWebView
-from tupelo_gui.setup import NotebookInfo
+from tupelo_gui.setnotebook import NotebookInfo
 
 class Tupelo(QMainWindow):
 
@@ -36,7 +36,7 @@ class Tupelo(QMainWindow):
 		_create_folder(os.path.join(user_dir_base, 'Documents', '.tupelo', 'user'))
 
 		self.file_dict = {}
-		with open(os.path.join(self.tupelo_dir, 'src', 'tupelo_gui', 'gui_files', 'qt_dark.css'), 'r') as qt_style:
+		with open(os.path.join(self.tupelo_dir, 'css', 'qt_dark.css'), 'r') as qt_style:
 			self.style = qt_style.read()
 		self.initUI()
 		self.show()
@@ -54,11 +54,11 @@ class Tupelo(QMainWindow):
 		self.background()
 		self.notebook_menu() ## start another thread of this 
 
-		self.setWindowIcon(QIcon(os.path.normcase('tupelo_gui/gui_files/logo.png')))
+		# self.setWindowIcon(QIcon(os.path.normcase('tupelo_gui/gui_files/logo.png')))
 
 	def background(self):
 		image_style = """
-			background-image: url('tupelo_gui/gui_files/logo.png') 100px 100px stretch stretch; 
+			background-image: url('images/logo.png') 100px 100px stretch stretch; 
 			background-repeat: no-repeat; 
 			background-position: center center;
 			"""

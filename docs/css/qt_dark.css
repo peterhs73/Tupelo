@@ -80,10 +80,10 @@ QMenu
 
 QMenu::item
 {
-    padding: 3px 25px 3px 8px;
-    margin: 1px 1px 1px 1px;
-    border: 1px solid transparent;
-    font: 18px;
+    padding: 5px 30px 5px 9px;
+/*    margin: 1px 1px 1px 1px;*/
+/*    border: 1px solid transparent;*/
+    font: 16px;
 }
 
 QMenu::item:selected
@@ -115,6 +115,15 @@ QLineEdit
     border: 1px solid #3A3939;
     border-radius: 2px;
     color: silver;
+    font: 15px;
+    font-family: Arial;
+}
+
+QLabel
+{
+    border: 0px solid black;
+    font: 16px;
+    font-family: Arial;
 }
 
 QAbstractScrollArea
@@ -282,12 +291,6 @@ QAbstractSpinBox:down-button
     subcontrol-position: bottom right;
 }
 
-
-QLabel
-{
-    border: 0px solid black;
-    font: 16px;
-}
 
 QTabWidget{
     border: 1px transparent black;

@@ -20,9 +20,13 @@ class TupeloWebView(QWebEngineView):
 		self.loadFinished.connect(self.on_load_finished)
 
 	def doc_edit(self, file_dict): # need to figure out a better way to pass this info
-		cur_url = os.path.normcase(self.url().toString())
+		cur_url = self.url().toString()
 		try:
 			print('file found, open')
+			print(cur_url)
+			print(file_dict)
+			print('wutwww')
+			print(file_dict[cur_url])
 			_doc_open(SYSTEM, file_dict[cur_url]) 
 		except:
 			print('something went wrong, cannot edit files')		

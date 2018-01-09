@@ -1,0 +1,14 @@
+# This files contains all the python packages needed for Tupelo.
+## To install simply use command python3 -m pip install -r requirement.txt
+# You will still need install pandoc independently
+
+## Python3 packages required
+
+PyQt5>=5.9.2
+pypandoc==1.4
+watchdog==0.8.3
+Jinja2==2.9.6
+
+## Python3 packages for possible future updates
+### nbconvert==5.3.1
+
