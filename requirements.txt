@@ -5,7 +5,6 @@
 ## Python3 packages required
 
 PyQt5>=5.9.2
-pypandoc==1.4
 watchdog==0.8.3
 Jinja2==2.9.6
 

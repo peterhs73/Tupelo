@@ -41,8 +41,8 @@ Thumbs.db
 *.pyc
 *.ipynb_checkpoints
 *.ipynb
-docs/dist/
+dist/
 internal/
-docs/build/
+build/
 
 
