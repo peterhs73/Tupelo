@@ -20,7 +20,8 @@ class LiveHandleSignal(QObject):
 
 class LiveEditHandle(PatternMatchingEventHandler):
 	
-	patterns = ['*.md', '*.rst']
+	patterns = ['*.md', '*.rst', '*.tex', '*.docx', '*.ipynb'] 
+	# patterns required for construct, will update in the constructor
 
 	def __init__(self, file_types, src_folder, dst_folder, tupelo_dir):
 		super().__init__()
@@ -110,7 +111,7 @@ class LiveEdit(QObject):
 		self.observer.schedule(event_handler, self.notebook['src_folder'], recursive=True)
 		self.observer.start()
 
-		print('Live Edit Started: single thread for {}'.format(self.notebook['src_folder']))
+		print('Live Edit: for {}'.format(self.notebook['src_folder']))
 		event_handler.signal.file_event.connect(self.event_change)
 		event_handler.signal.move_event.connect(self.event_move)
 

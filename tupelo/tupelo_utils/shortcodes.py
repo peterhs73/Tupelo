@@ -104,7 +104,6 @@ def _file_list_grab(dst_folder):
 	if os.path.exists(filelog_path) and os.path.exists(pandoc_path):
 		with open(filelog_path, 'r') as filelog:
 			filelog_list = json.load(filelog)
-			print("json file log loaded")
 		return (True, filelog_list)
 	else:
 		return (False, [])
@@ -118,7 +117,6 @@ def _item_exist(list_file, key_name, new_item): # is this needed
 
 def _file_dict(dst_folder):
 	files_dict = {}
-	print('fiel dict this happened')
 	try:
 		with open(os.path.join(dst_folder, '.tupelo', 'file_log.json'), 'r') as file_log:
 			file_list = json.load(file_log)

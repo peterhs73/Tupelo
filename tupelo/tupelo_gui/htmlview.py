@@ -30,7 +30,10 @@ class TupeloWebView(QWebEngineView):
 		self.cur_url = self.url().toString()
 		try:
 			print('File found, open')
-			_doc_open(SYSTEM, file_dict[self.cur_url]) 
+			if file_dict[self.cur_url].endswith('.ipynb'):
+				print('ipython open support not ready')
+			else:
+				_doc_open(SYSTEM, file_dict[self.cur_url]) 
 		except:
 			print('something went wrong, cannot edit files')		
 
@@ -59,7 +62,7 @@ class TupeloWebPage(QWebEnginePage):
 
 	def acceptNavigationRequest(self, url, nav_type, is_frame):
 		if nav_type == 0:
-			if url.toString().lower().startswith('https://') or url.toString().lower().startswith('http://') or url.toString().lower().endswith('.pdf'):
+			if url.toString().lower().startswith(('https://','http://')) or url.toString().lower().endswith('.pdf'):
 				QDesktopServices.openUrl(url)
 				return False
 			else:

@@ -30,7 +30,7 @@ else:
 build_exe_options = {
 		"packages": ["idna", "os", "sys", "platform", "json", "datetime", "time", "subprocess", "traceback", 
 					"pathlib", "glob", "shutil", "functools", "watchdog", "jinja2", "asyncio",
-					"tupelo_gui", "tupelo_utils"
+					"nbconvert", "nbformat", "pygments", "tupelo_gui", "tupelo_utils"
 					],
 		"includes": ["PyQt5.QtGui", "PyQt5.QtCore", "PyQt5.QtWebEngineWidgets", "PyQt5.QtWidgets"],
 		"include_files": files
@@ -45,7 +45,7 @@ tupelo_target = Executable(
 	script = "tupelo/tupelo.py", 
 	base = base,
 	icon = "tupelo/images/logo.ico",
-	shortcutName = "Tueplo-0.2.0",
+	shortcutName = "Tueplo-0.3.0",
 	shortcutDir = "DesktopFolder"
 	)
 
@@ -59,7 +59,7 @@ with open('LICENSE.txt') as LICENSE:
 
 setup(
 	name = "Tupelo",
-	version = "0.2.0",
+	version = "0.3.0",
 	license=license,
 	author = "Peter Sun",
 	author_email = 'hs859@cornell.edu',

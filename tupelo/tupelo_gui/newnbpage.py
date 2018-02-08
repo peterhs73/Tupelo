@@ -13,6 +13,21 @@ class NewNotebook(QWidget):
 
 	setup_sig = pyqtSignal(dict)
 
+	style = """
+	QLabel{
+		font: 16px;
+		font-family: Verdana;
+	}
+	QLineEdit{
+		font: 16px;
+		font-family: Verdana;
+	}
+	QPushButton{
+		font: 16px;
+		font-family: Verdana;
+	}
+	"""
+
 	def __init__(self, notebooks_list, user_dir, tupelo_dir, parent = None):
 		super().__init__(parent)
 
@@ -28,13 +43,11 @@ class NewNotebook(QWidget):
 		self.nickname_label = QLabel('nickname', self)
 
 		self.src_box = QLineEdit(self)
-		self.md = QPushButton('.md', self)
-		self.rst = QPushButton('.rst', self)
-		self.tex = QPushButton('.tex', self)
-		self.docx = QPushButton('.docx', self)
+		for ftype in ['.md', '.rst', '.ipynb', '.tex', '.docx']:
+			setattr(self, ftype.replace('.',''), QPushButton(ftype, self) )
 
 		filetypes_box = QHBoxLayout()
-		for btn in [self.md, self.rst, self.tex, self.docx]:
+		for btn in [self.md, self.rst, self.ipynb, self.tex, self.docx]:
 			btn.setCheckable(True)
 			btn.setChecked(True)
 			filetypes_box.addWidget(btn)
@@ -54,22 +67,30 @@ class NewNotebook(QWidget):
 		grid.setSpacing(7)
 
 		layouts = [
-			self.src_label,     		self.src_box,               self.src_folder_btn,
-			self.nickname_label,     	self.nickname_box,      	None,
-			self.type_label,     		None,              			None,
-			None, 						self.confirm_btn, 			None,
+			None, None,                     None,                       None,                None, 
+			None, self.src_label,     		self.src_box,               self.src_folder_btn, None,
+			None, self.nickname_label,     	self.nickname_box,      	None,                None,
+			None, self.type_label,     		None,              			None,                None,
+			None, None, 					self.confirm_btn, 	        None,                None,
+			None, None,                     None,                       None,                None, 
 		]
 
-		positions = [(row, col) for row in range(4) for col in range(3)]
+		positions = [(row, col) for row in range(6) for col in range(5)]
 		for pos, widget in zip(positions, layouts):
 			if widget == None:
 				continue
 			grid.addWidget(widget, *pos)
 
-		grid.addLayout(filetypes_box,2,1,1,2)
-		grid.addWidget(self.__warning, 4,0,1,3)
+		grid.setColumnStretch(0, 1)
+		grid.setColumnStretch(4, 1)
+		grid.setRowStretch(0, 1)
+		grid.setRowStretch(6, 2)
+
+		grid.addLayout(filetypes_box,3, 2)
+		grid.addWidget(self.__warning, 5,1,1,3)
 
 		self.setLayout(grid)
+		self.setStyleSheet(self.style)
 		self.setWindowTitle("Notebook Setup")
 		
 	@pyqtSlot()
@@ -111,11 +132,11 @@ class NewNotebook(QWidget):
 
 	def user_info_emit(self, folder_info, nickname):
 		self.__warning.setStyleSheet("color:green")
-		self.__warning.setText('...setting up, might take couple of seconds...')
+		self.__warning.setText('...setting up, might take several seconds...')
 
 		# return the objects as the results
 		filetypes = []
-		for btn in [self.md, self.rst, self.tex, self.docx]:
+		for btn in [self.md, self.rst, self.ipynb, self.tex, self.docx]:
 			if btn.isChecked():
 				filetypes.append('**/*{}'.format(btn.text()))
 

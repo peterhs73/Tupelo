@@ -6,9 +6,9 @@
 import os
 import json
 
-from PyQt5.QtCore import pyqtSignal, pyqtSlot, Qt
+from PyQt5.QtCore import pyqtSignal, pyqtSlot, Qt, QSize
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QComboBox, QFrame, QMessageBox, QApplication, QWidget, QFileDialog, QPushButton, QLineEdit, QLabel, QGridLayout, QHBoxLayout
+from PyQt5.QtWidgets import QVBoxLayout, QComboBox, QFrame, QMessageBox, QApplication, QWidget, QFileDialog, QPushButton, QLineEdit, QLabel, QGridLayout, QHBoxLayout, QSizePolicy
 
 # from tupelo_utils.notebook import FolderInfo, notebook_info_grab
 
@@ -44,7 +44,7 @@ class NBSettings(QWidget):
 	}
 	QComboBox
 	{
-    	font: 16px;
+		font: 16px;
 	}
 	"""
 
@@ -74,6 +74,8 @@ class NBSettings(QWidget):
 
 		self.UIinit()
 		self.setStyleSheet(self.style)
+		sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+		self.setSizePolicy(sizePolicy)
 
 	def UIinit(self):
 
@@ -92,7 +94,6 @@ class NBSettings(QWidget):
 
 		self._view_status = QLabel('')
 		self._nb_status = QLabel('')
-		
 
 		self.nb_default = QComboBox()
 		nb_index_urls = []
@@ -117,84 +118,102 @@ class NBSettings(QWidget):
 		self.update_view.clicked.connect(self.view_setting_update)
 		self.discard.clicked.connect(self.discard_change)
 		self.confirm.clicked.connect(self.confirm_change)
-		
-		self.grid = QGridLayout()
-		# self.grid.setSpacing(10)
-		self.grid.setColumnStretch(0, 1)
-		# self.grid.setColumnStretch(1, 1)
-		self.grid.setColumnStretch(2, 1)
-		self.grid.setColumnStretch(3, 1)
-		self.grid.setColumnStretch(4, 1)
-		self.grid.setColumnStretch(5, 1)
 
-		# self.grid.setColumnMinimumWidth(0,200)
-		# self.grid.setColumnMinimumWidth(1,200)
-		self.grid.setColumnMinimumWidth(2,150)
-		self.grid.setColumnMinimumWidth(3,180)
-		# self.grid.setColumnMinimumWidth(4,100)
-		self.grid.setColumnMinimumWidth(5,100)
-		self.grid.setColumnMinimumWidth(6,100)
+		###############################################
+		## View Grid
+		###############################################
 
-		HOLDER = None #a place_holder 
-
-		layouts = [
+		self.view_grid = QGridLayout()
+		view_layouts = [
 			None,                  None,     		None,                  None,            None,             None,
 			self.view,             None,            None,       		   None,            None,             None,           
 			self.scaling_factor,   self.scale_f,    self.default_notebook, self.nb_default, self.theme,       self.theme_set,          
-			None,                  None,            None,                  None,            None,             None,             # Space
-			None,                  None,            None,                  None,            None,             None,             # update
-			None,                  None,       	    None,                  None,            None,             None,             # status
-			None,                  None,     		None,                  None,            None,             None,             # Line
-			self.notebooks,        None,       		None,                  None,            None,  		      None,           
-			None,                  None,            self.nickname,	       self.file_types, None,             self.actions,    
-		]
-
-		self.row_num = 9
-		positions = [(row, col) for row in range(self.row_num) for col in range(6)]
-		for pos, widget in zip(positions, layouts):
+			]
+		view_positions = [(row, col) for row in range(3) for col in range(6)]
+		for pos, widget in zip(view_positions, view_layouts):
 			if widget == None:
 				continue
-			self.grid.addWidget(widget, *pos)
+			self.view_grid.addWidget(widget, *pos)
+		
+		for i in range(6):
+			self.view_grid.setColumnStretch(i, 1)
+
+		empty_line = QLabel('')
+		self.view_grid.addWidget(self._add_line(), 0, 0, 1, 6)
+		self.view_grid.addWidget(empty_line, 3, 0, 2, 6)
+		self.view_grid.addWidget(self.update_view, 4, 5, 1, 2)
+		self.view_grid.addWidget(self._view_status, 4, 0, 1, 4)
+		self.view_grid.addWidget(empty_line, 5, 0, 2, 7)
+
+		###############################################
+		## Notebook Grid
+		###############################################
+		self.nb_grid = QGridLayout()
+
+		self.nb_grid.setColumnStretch(0, 4)
+		self.nb_grid.setColumnStretch(1, 1)
+		self.nb_grid.setColumnStretch(2, 3)
+		self.nb_grid.setColumnStretch(3, 1)
+		self.nb_grid.setColumnStretch(4, 1)
+
+		self.nb_grid.setColumnMinimumWidth(0,200)
+		self.nb_grid.setColumnMinimumWidth(1,120)
+		self.nb_grid.setColumnMinimumWidth(2,120)
+		self.nb_grid.setColumnMinimumWidth(3,40)
+		self.nb_grid.setColumnMinimumWidth(4,40)
+
+		nb_layouts = [
+			None,                 None,            None,             None,             # Line
+			self.notebooks,       None,            None,             None,           
+			self.source_folder,   self.nickname,   self.file_types,  self.actions,    
+		]
+		for label in [self.source_folder,   self.nickname,   self.file_types,  self.actions]:
+			label.setStyleSheet('font-weight: bold')
+
+		self.row_num = 3
+		nb_positions = [(row, col) for row in range(self.row_num) for col in range(4)]
+		for pos, widget in zip(nb_positions, nb_layouts):
+			if widget == None:
+				continue
+			self.nb_grid.addWidget(widget, *pos)
+			
 
 		row_num = self.row_num # need to reset if modified
 		
-		print('this is length', len(layouts))
 		for nb in self.user_info:
 			self.nb_layout(nb, row_num)
 			self.nb_update[row_num] = {'del': False, 'update': False}
-			print(self.nb_update)
 			row_num += 1
 
-		empty_line = QLabel('')
-
-		self.grid.addWidget(self._add_line(), 0, 0, 1, 7)
-		self.grid.addWidget(empty_line, 3, 0, 2, 7)
-		self.grid.addWidget(self.update_view, 4, 5, 1, 2)
-		self.grid.addWidget(self._view_status, 4, 0, 1, 5)
-		self.grid.addWidget(self._add_line(), 5, 0, 1, 7)
-		self.grid.addWidget(empty_line, 6, 0, 2, 7)
-		
-		
-		self.grid.addWidget(self.source_folder, 8, 0, 1, 2)
-		
-		self.grid.addWidget(self._add_line(), row_num, 0, 1, 7)
-		self.grid.addWidget(empty_line, row_num + 1, 0, 2, 7)
-		self.grid.addWidget(self.discard, row_num + 3, 5)
-		self.grid.addWidget(self.confirm, row_num + 3, 6)
+		self.nb_grid.addWidget(self._add_line(), 0, 0, 1, 5)
+		self.nb_grid.addWidget(self._add_line(), row_num, 0, 1, 5)
+		self.nb_grid.addWidget(empty_line, row_num + 1, 0, 2, 5)
+		self.nb_grid.addWidget(self.discard, row_num + 2, 3)
+		self.nb_grid.addWidget(self.confirm, row_num + 2, 4)
 		self.confirm.setToolTip('This will shut down Tupelo, please restart afterwards')
-		self.grid.addWidget(self._nb_status, row_num + 3, 0, 1, 5)
+		self.nb_grid.addWidget(self._nb_status, row_num + 3, 0, 1, 3)
 
-		# self.grid.setHorizontalSpacing(10)
+		##############################
+		## Combine Grids
+		##############################
+		self.grid_box = QGridLayout()
 
-		self.setLayout(self.grid)
-		self.resize(600, 400)
+		self.grid_box.setRowStretch(0, 1)
+		self.grid_box.setRowStretch(3, 2)
+		self.grid_box.setColumnMinimumWidth(0,10)
+		self.grid_box.setColumnMinimumWidth(2,10)
+
+		self.grid_box.addLayout(self.view_grid, 1, 1)
+		self.grid_box.addLayout(self.nb_grid, 2, 1)
+
+		self.setLayout(self.grid_box)
 
 
 	def nb_layout(self, nb_dict, row_num):
 
 		nb_tag = os.path.basename(nb_dict['dst_folder'])
 		item_list = [f'srcfolder_{nb_tag}', f'nickname_{nb_tag}']
-		filetype_list = [f'md_{nb_tag}', f'rst_{nb_tag}', f'docx_{nb_tag}', f'tex_{nb_tag}']
+		filetype_list = [f'md_{nb_tag}', f'rst_{nb_tag}', f'ipynb_{nb_tag}', f'tex_{nb_tag}', f'docx_{nb_tag}',]
 		btn_list = [f'update_{nb_tag}', f'delete_{nb_tag}']
 
 		setattr(self, item_list[0], QLabel(nb_dict['src_folder']))
@@ -210,17 +229,15 @@ class NBSettings(QWidget):
 			if '**/*.{}'.format(filetype.split('_')[0]) in nb_dict['filetypes']:
 				getattr(self, filetype).setChecked(True)
 		
-		all_list = [item_list[1]] + [''] + btn_list # add a spacing in between
-		self.grid.addWidget(getattr(self, f'srcfolder_{nb_tag}'), row_num, 0, 1, 2)
-		self.grid.addWidget(getattr(self, f'nickname_{nb_tag}'), row_num, 2)
-		self.grid.addWidget(getattr(self, f'update_{nb_tag}'), row_num, 5)
-		self.grid.addWidget(getattr(self, f'delete_{nb_tag}'), row_num, 6)
+		all_list = item_list + [''] + btn_list # add a spacing in between
+		for i in [0, 1, 3, 4]:
+			self.nb_grid.addWidget(getattr(self, all_list[i]), row_num, i)
 
 		filetype_layout = QHBoxLayout()
 		for ftype in filetype_list:
 			filetype_layout.addWidget(getattr(self, ftype))
 
-		self.grid.addLayout(filetype_layout, row_num, 3, 1, 2)
+		self.nb_grid.addLayout(filetype_layout, row_num, 2)
 
 		def update_fn():
 			self._nb_status.clear()
@@ -232,7 +249,7 @@ class NBSettings(QWidget):
 			self.nb_update[row_num]['update'] = True
 			self.nb_update[row_num]['nickname'] = getattr(self, f'nickname_{nb_tag}').text()
 			self.nb_update[row_num]['filetypes'] = newtypes
-			print(self.nb_update)
+
 			self._status(self._nb_status, 'Notebook {} Updated'.format(nb_dict['src_folder']), 'Green')
 
 		def del_fn():
@@ -266,7 +283,7 @@ class NBSettings(QWidget):
 			json.dump(self.user_info, uinfo)
 
 	def confirm_change(self):
-		respond = self._MessageBox('Saving Settings', 'Changes are only saved after update')
+		respond = self._MessageBox('Saving Settings', 'Changes are only saved after UPDATE\nRESTART REQUIRED')
 		if respond == QMessageBox.Yes:
 			self.change_sig.emit()
 			self.info_update()
@@ -306,7 +323,7 @@ class NBSettings(QWidget):
 if __name__ == "__main__":
 	import sys
 	app = QApplication(sys.argv)
-	ex = NBSettings('C:\\Users\\peter\\Desktop\\User')
+	ex = NBSettings('C:\\Users\\peter\\.tupelo')
 	ex.show()
 	sys.exit(app.exec_())
 

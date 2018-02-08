@@ -29,10 +29,16 @@ if __name__ == "__main__":
 	if which('pandoc'): #Track if pandoc is executable
 		print('Checked: Pandoc installed')
 		app = QApplication(sys.argv)
+		########## Add splash screen
+		splash_pix = QPixmap(os.path.join(TUPELO_DIR, 'images', 'tupelo.png'))
+		splash = QSplashScreen(splash_pix, Qt.WindowStaysOnTopHint)
+		splash.show()
+		##########################
 		app.setWindowIcon(QIcon(os.path.join(TUPELO_DIR, 'images', 'logo.ico')))
 		app.setAttribute(Qt.AA_EnableHighDpiScaling)
 		tupelo = TupeloCore(TUPELO_DIR, USER_DIR)
 		tupelo.show()
+		splash.close()
 		sys.exit(app.exec_())
 
 	else: # if pandoc is not installed, prompt pandoc installation window

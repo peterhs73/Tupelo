@@ -29,7 +29,7 @@ class TupeloWindow(QMainWindow):
 
 	def set_basics(self):
 		self.set_menus()
-		self.resize(1100, 750)
+		self.resize(1200, 750)
 		self.setWindowTitle('Tupelo')
 
 	def set_style(self, tupelo_dir):
@@ -42,10 +42,10 @@ class TupeloWindow(QMainWindow):
 			background-image: url('{}') 100px 100px stretch stretch; 
 			background-repeat: no-repeat; 
 			background-position: center center;
-			""".format(_href_link_path(os.path.join(tupelo_dir, 'images', 'logo.png')))
+			""".format(_href_link_path(os.path.join(tupelo_dir, 'images', 'tupelo.png')))
 
 		self.background_image = QFrame(self)
-		self.background_image.setGeometry(300, 125, 500, 500)
+		self.background_image.setGeometry(350, 100, 500, 550)
 		self.background_image.setStyleSheet(image_style)
 
 	def import_settings(self, user_dir_tupelo):

@@ -44,5 +44,6 @@ Thumbs.db
 dist/
 internal/
 build/
+tupelo/testwin.py
 
 

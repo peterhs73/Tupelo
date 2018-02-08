@@ -152,8 +152,11 @@ def tupelo_update(file_types, src_folder, dst_folder, tupelo_dir, file_list_old 
 
 	for doc_update in file_update_list:
 		_create_folder(os.path.dirname(doc_update['doc_dst']))
-		tupelo_render.pandoc_render(src_folder, dst_folder, doc_update)
-
+		if os.path.splitext(doc_update['doc_src'])[1] == '.ipynb':
+			tupelo_render.ipython_render(tupelo_dir, tupelo_file.index_dict, dst_folder, doc_update)
+		else:
+			tupelo_render.pandoc_render(src_folder, dst_folder, doc_update)
+		
 	return tupelo_file.file_list
 
 def tupelo_move(file_types, src_folder, dst_folder, tupelo_dir, src_doc_src, src_doc_dst, file_list_old = []):

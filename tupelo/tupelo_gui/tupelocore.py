@@ -39,18 +39,16 @@ class TupeloCore(TupeloWindow):
 		self.thread_pool = QThreadPool()
 		self.notebooks = []
 		self.__threads = []
+		self.file_dict = {}
 
 		# Start the GUI
 		self.initUI()
 
 		# Update Current file_logs
-		self.file_dict = {}
+		
 		for notebook_info in self.notebooks:
 			self.file_dict.update(_file_dict(notebook_info['dst_folder']))
-		if self.view_settings['DefaultIndex'] is not None and os.path.exists(self.view_settings['DefaultIndex'].replace('file:///','')):
-			self.add_browser(self.view_settings['DefaultIndex'])
 
-		self.show()
 
 	def initUI(self):
 		self.set_basics()
@@ -97,8 +95,13 @@ class TupeloCore(TupeloWindow):
 			if os.path.isdir(folder) and tupelo_dst not in dst_list_user:
 				shutil.rmtree(folder)
 
-		print('Tupelo Statup Completed, start live update thread')
+		print('Tupelo Statup Completed, start live editing')
 		self.start_liveedit_threads(self.notebooks)
+
+		if self.view_settings['DefaultIndex'] is not None and os.path.exists(self.view_settings['DefaultIndex'].replace('file:///','')):
+			self.add_browser(self.view_settings['DefaultIndex'])
+
+		self.show()
 
 	def notebook_update_thread(self, notebook_info):
 		# Thread for updating notebooks
@@ -116,18 +119,17 @@ class TupeloCore(TupeloWindow):
 				self.browser.close()
 			except:
 				pass
-			self.user_info.close()
+			self.nb_setup.close()
 		except:
 			print('Already closed')
 
 		for action in self.browser_action_lst:
 			action.setDisabled(True)
 
-		self.NB_settings = NBSettings(self.user_dir_tupelo, parent = self)
-		self.NB_settings.setGeometry(25, 100, 1050, 500) # set for the resize (1100 - 1000/2, 750 - 500/125)
-		self.NB_settings.show()
-		self.NB_settings.change_sig.connect(self.tupelo_settings_restart)
-		self.NB_settings.discard_sig.connect(self.tupelo_settings_discard)
+		self.nb_setting = NBSettings(self.user_dir_tupelo, parent = self)
+		self.setCentralWidget(self.nb_setting)
+		self.nb_setting.change_sig.connect(self.tupelo_settings_restart)
+		self.nb_setting.discard_sig.connect(self.tupelo_settings_discard)
 
 	def tupelo_settings_restart(self):
 		print("requires restart")
@@ -151,15 +153,14 @@ class TupeloCore(TupeloWindow):
 				self.browser.close()
 			except:
 				pass
-			self.NB_settings.close()
+			self.nb_setting.close()
 		except:
 			pass
 
-		self.user_info = NewNotebook(self.notebooks, self.user_dir, self.tupelo_dir, parent = self)
-		self.user_info.setGeometry(350, 250, 400, 170) # set for the resize (1100 - 350 /2, 750 - 150 /2)
-		self.user_info.show()
+		self.nb_setup = NewNotebook(self.notebooks, self.user_dir, self.tupelo_dir, parent = self)
 
-		self.user_info.setup_sig.connect(self.notebook_gen_thread) # collect the signal from NotebookInfo, which is a notebook dictionary
+		self.setCentralWidget(self.nb_setup)
+		self.nb_setup.setup_sig.connect(self.notebook_gen_thread) # collect the signal from NotebookInfo, which is a notebook dictionary
 
 	######################### 
 	########## Method for adding new notebook
@@ -197,6 +198,7 @@ class TupeloCore(TupeloWindow):
 
 	def thread_complete(self):
 		print("notebook updated")
+
 	
 	############################# Live Update Thread
 	def start_liveedit_threads(self, notebooks_list):
